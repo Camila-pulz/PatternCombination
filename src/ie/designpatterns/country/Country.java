@@ -1,20 +1,23 @@
 package ie.designpatterns.country;
 
-public class Country {
+public abstract class Country {
 	
 	private String name;
 	private float surfaceAarea;
 	private char headOfState;
+	private CountryE continent;
 	
-	public Country(String name, float area, char head) {
+	
+	
+	public CountryE getContinent() {
+		return continent;
+	}
+	public Country(String name, float area, char head, CountryE continent) {
 		this.name = name;
 		this.surfaceAarea = area;
 		this.headOfState = head;
 		
 	}
-	
-	
-	
 	
 	public void setName(String name) {
 		this.name = name;
@@ -37,11 +40,9 @@ public class Country {
 	@Override
 	public String toString() {
 		return "Country [name=" + name + ", surfaceAarea=" + surfaceAarea + ", "
-				+ "headOfState=" + headOfState + "]";
+				+ "headOfState=" + headOfState
+				+ ", continent=" + continent + "]";
 	}
 	
+	}
 	
-
-	
-
-}
