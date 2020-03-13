@@ -2,20 +2,20 @@ package ie.designpatterns.country;
 
 public enum CountryE {
 	
-	NORTH_AMERICA("North America"),
-	SOUTH_AMERICA("South America"),
-	ANTARTICA("Antartica"),
-	EUROPE("Europe"),
-	ASIA("Asia"),
-	AFRICA("Africa"),
-	AUSTRALIA("Australia");
+	NORTH_AMERICA(1, "North America"),
+	SOUTH_AMERICA(2, "South America"),
+	EUROPE(3, "Europe"),
+	ASIA(4, "Asia"),
+	AFRICA(5, "Africa"),
+	AUSTRALIA(6, "Australia");
 	
-	//private final int id;
+
 	private final String continent;
+	private final int code;
 	
 	
-	private CountryE(String continent) {
-		//this.id = id;
+	private CountryE(int cod, String continent) {
+		this.code = cod;
 		this.continent = continent;
 		
 	}
@@ -33,6 +33,10 @@ public enum CountryE {
 		}
 		return null;
 		
+	}
+
+	public int getCode() {
+		return code;
 	}
 	
 	

@@ -12,10 +12,14 @@ public abstract class Country {
 	public CountryE getContinent() {
 		return continent;
 	}
+	
+	
 	public Country(String name, float area, char head, CountryE continent) {
 		this.name = name;
 		this.surfaceAarea = area;
 		this.headOfState = head;
+		this.continent = continent;
+		
 		
 	}
 	

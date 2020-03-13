@@ -3,17 +3,22 @@ package ie.designpatterns.client;
 import java.io.BufferedReader;
 import java.util.Scanner;
 
+import ie.designpatterns.country.CountryE;
+import ie.designpatterns.country.CountryObjects;
+
 public class ClientCommandLine {
 	
-	//private BufferedReader in;
+	private BufferedReader in;
 	private String input;
 	private String countryN, continent;
 	private float surface;
 	private char head;
 	private Scanner reader = new Scanner(System.in);
+	private CountryObjects cO;
 	
-	public ClientCommandLine() {
 		
+		public void showOptions() {
+			
 		System.out.println("Welcome to the system!");
 		System.out.println("Please, select one of the options:");
 		System.out.println("1. List all the countries in the database");
@@ -27,7 +32,6 @@ public class ClientCommandLine {
 		
 		try {
 			
-			System.out.println("Please, insert a number:");
 			input = reader.nextLine();
 			if(input.equals("1")) {
 				
@@ -35,7 +39,7 @@ public class ClientCommandLine {
 				
 			}if(input.equals("3")) {
 				
-			}if(input.contentEquals("4")) {
+			}if(input.equals("4")) {
 				dataToSave();
 			}
 			
@@ -47,29 +51,74 @@ public class ClientCommandLine {
 		
 		public void dataToSave() {
 			
-			System.out.println("insert the name of the country");
+			System.out.println("Please, type the name of the Country:");
 			countryN = reader.nextLine();
 			System.out.println(countryN);
 			
-			System.out.println("insert the area of th surface");
+			System.out.println("Please, insert the area of the surface of the country:");
 			surface = reader.nextFloat();
 			System.out.println(surface);
 			
-			System.out.println("insert the head of state");
+			System.out.println("Please, insert the Head of state:");
 			head = reader.next().charAt(0);
 			System.out.println(head);
 			
-			System.out.println("insert the continent");
-			continent = reader.nextLine();
+			System.out.println("Select the number which corresponds to the name of the continent:");
+			System.out.println("1. North America");
+			System.out.println("2. South America");
+			System.out.println("3. Europe");
+			System.out.println("4. Asia");
+			System.out.println("5. Africa");
+			System.out.println("6. Australia");
+			
+			continent = reader.next();
 			System.out.println(continent);
+		
+			
+			System.out.println(continent);
+		
+			
+			
 			
 			
 		}
+
+		public String getCountryN() {
+			return countryN;
+		}
+
+		public void setCountryN(String countryN) {
+			this.countryN = countryN;
+		}
+
+		public String getContinent() {
+			return continent;
+		}
+
+		public void setContinent(String continent) {
+			this.continent = continent;
+		}
+
+		public float getSurface() {
+			return surface;
+		}
+
+		public void setSurface(float surface) {
+			this.surface = surface;
+		}
+
+		public char getHead() {
+			return head;
+		}
+
+		public void setHead(char head) {
+			this.head = head;
+		}
 	
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new ClientCommandLine();
+	//	new ClientCommandLine();
 
 	}
 
-}
+

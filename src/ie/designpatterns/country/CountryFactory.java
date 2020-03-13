@@ -1,11 +1,14 @@
 package ie.designpatterns.country;
 
+import ie.designpatterns.client.ClientCommandLine;
+
 public class CountryFactory {
 	
 
 	public static Country createCountry(String name, float area, char head, CountryE continent) {
 		
 		Country country = null;
+		ClientCommandLine cmd = new ClientCommandLine();
 		
 		switch(continent) {
 		
@@ -17,9 +20,6 @@ public class CountryFactory {
 			country = new CountryObjects(name,area,head,continent);
 			break;
 			
-		case ANTARTICA:
-			country = new CountryObjects(name,area,head,continent);
-			break;
 			
 		case AFRICA:
 			country = new CountryObjects(name,area,head,continent);
@@ -36,9 +36,9 @@ public class CountryFactory {
 		case EUROPE:
 			country = new CountryObjects(name,area,head,continent);
 			break;
-			
-	
-}
+		}	
+
+
 		return country;
 	}
 }
