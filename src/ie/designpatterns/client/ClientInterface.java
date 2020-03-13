@@ -3,12 +3,15 @@ package ie.designpatterns.client;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class ClientInterface {
 	
 	private BufferedReader in;
 	private String input;
 	private String countryN, surface;
+	//private float surface;
+	private Scanner reader;
 	
 	public ClientInterface() {
 		
@@ -63,11 +66,16 @@ public class ClientInterface {
 	public void savingFunction() throws IOException {
 		
 		boolean stop = false;
+		reader = new Scanner(System.in);
+		
+		try {
 		
 		do {
 			System.out.println("Please, insert the name of the country:");
-			in = new BufferedReader(new InputStreamReader(System.in));
-			countryN = in.readLine();
+			//reader = new Scanner(System.in);
+			//in = new BufferedReader(new InputStreamReader(System.in));
+			//countryN = in.readLine();
+			countryN = reader.nextLine();
 			if(countryN.matches("brazil") && (countryN != " ")) {
 				stop = true;
 				System.out.println(countryN);
@@ -75,16 +83,23 @@ public class ClientInterface {
 			}
 		}while(stop == false);
 		
+		
 		do {
 		System.out.println("Please, insert the area of the surface");
-		in = new BufferedReader(new InputStreamReader(System.in));
-		surface = in.readLine();
-		if(surface.matches("23")) {
+		//reader = new Scanner(System.in);
+		surface = reader.nextLine();
+		if(surface == "ola")  {
 			stop = true;
+			System.out.println(surface);
+		}
+		}while(stop != true); 
+			
+		}catch(Exception e) {
+			System.out.println("error");
 			
 		}
-		}while(stop == false);
 	}
+
 	
 	public static void main(String [] args) {
 		new ClientInterface();
