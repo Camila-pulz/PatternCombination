@@ -16,7 +16,7 @@ public class Test {
 		ClientCommandLine ccl = new ClientCommandLine();
 		ccl.showOptions();
 		Country brazil = CountryFactory.createCountry(ccl.getCountryN(),ccl.getSurface(), 
-						ccl.getHead(), CountryE.SOUTH_AMERICA);
+						ccl.getHead(), CountryE.getCountryE(ccl.getContinent()));
 		System.out.println(brazil);
 		
 	}

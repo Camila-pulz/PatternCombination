@@ -69,13 +69,14 @@ public class ClientCommandLine {
 			System.out.println("3. Europe");
 			System.out.println("4. Asia");
 			System.out.println("5. Africa");
-			System.out.println("6. Australia");
+			System.out.println("6. Oceania");
+			System.out.println("7. Antarctica");
 			
 			continent = reader.next();
 			System.out.println(continent);
 		
 			
-			System.out.println(continent);
+			
 		
 			
 			

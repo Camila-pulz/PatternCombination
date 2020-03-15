@@ -7,7 +7,8 @@ public enum CountryE {
 	EUROPE(3, "Europe"),
 	ASIA(4, "Asia"),
 	AFRICA(5, "Africa"),
-	AUSTRALIA(6, "Australia");
+	OCEANIA(6, "Oceania"),
+	ANTARCTICA(7,"Antarctica");
 	
 
 	private final String continent;
@@ -24,6 +25,10 @@ public enum CountryE {
 		return continent;
 	}
 	
+	public int getCode() {
+		return code;
+	}
+	
 	public static CountryE getCountryE(String continent) {
 		
 		for(CountryE countries: values()) {
@@ -34,11 +39,4 @@ public enum CountryE {
 		return null;
 		
 	}
-
-	public int getCode() {
-		return code;
-	}
-	
-	
-
 }
