@@ -2,38 +2,38 @@ package ie.designpatterns.country;
 
 public class CountryFactory {
 
-	public static Country createCountry(String name, float area, char head, CountryE continent) {
+	public static Country createCountry(char code, String name, CountryE continent, float area, char head) {
 
 		Country country = null;
 
 		switch (continent) {
 
 		case NORTH_AMERICA:
-			country = new CountryObjects(name, area, head, continent);
+			country = new CountryObjects(code, name, continent, area, head);
 			break;
 
 		case SOUTH_AMERICA:
-			country = new CountryObjects(name, area, head, continent);
+			country = new CountryObjects(code, name, continent, area, head);
 			break;
 
 		case AFRICA:
-			country = new CountryObjects(name, area, head, continent);
+			country = new CountryObjects(code, name, continent, area, head);
 			break;
 
 		case ASIA:
-			country = new CountryObjects(name, area, head, continent);
+			country = new CountryObjects(code, name, continent, area, head);
 			break;
 
 		case OCEANIA:
-			country = new CountryObjects(name, area, head, continent);
+			country = new CountryObjects(code, name, continent, area, head);
 			break;
 
 		case EUROPE:
-			country = new CountryObjects(name, area, head, continent);
+			country = new CountryObjects(code, name, continent, area, head);
 			break;
 
 		case ANTARCTICA:
-			country = new CountryObjects(name, area, head, continent);
+			country = new CountryObjects(code, name, continent, area, head);
 			break;
 		}
 

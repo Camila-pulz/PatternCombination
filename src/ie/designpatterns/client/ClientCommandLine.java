@@ -7,7 +7,7 @@ public class ClientCommandLine {
 	private String input;
 	private String countryN, continent;
 	private float surface;
-	private char head;
+	private char head, code;
 	private Scanner reader = new Scanner(System.in);
 
 	public void showOptions() {
@@ -45,11 +45,16 @@ public class ClientCommandLine {
 	}
 
 	public void dataToSave() {
-
+		
 		System.out.println("Please, type the name of the Country:");
 		countryN = reader.nextLine();
 		System.out.println(countryN);
 
+		
+		System.out.println("Please, type the code of the Country:");
+		code = reader.next().charAt(0);
+		System.out.println(code);
+		
 		System.out.println("Please, insert the area of the surface of the country:");
 		surface = reader.nextFloat();
 		System.out.println(surface);
@@ -74,6 +79,15 @@ public class ClientCommandLine {
 
 	public String getCountryN() {
 		return countryN;
+	}
+
+	public char getCode() {
+		return code;
+	}
+	
+	public void setCode(char code) {
+		this.code = code;
+		
 	}
 
 	public void setCountryN(String countryN) {
