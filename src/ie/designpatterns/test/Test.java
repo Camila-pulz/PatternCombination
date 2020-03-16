@@ -12,7 +12,6 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		// ConnectionDatabase.getConnection();
 		ClientCommandLine ccl = new ClientCommandLine();
 		ccl.showOptions();
 		Country brazil = CountryFactory.createCountry(ccl.getCode(), ccl.getCountryN(), CountryE.getCountryE(ccl.getContinent()), ccl.getSurface(), ccl.getHead());

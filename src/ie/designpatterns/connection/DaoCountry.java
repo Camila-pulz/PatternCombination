@@ -2,9 +2,14 @@ package ie.designpatterns.connection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import ie.designpatterns.country.Country;
+import ie.designpatterns.country.CountryE;
+import ie.designpatterns.country.CountryFactory;
 
 public class DaoCountry {
 
@@ -39,6 +44,29 @@ public class DaoCountry {
 
 		return country;
 
+	}
+	
+	public List<Country> listAllCountries(){
+		List<Country> allCountries = new ArrayList<>();
+		String sql="SELECT * FROM Countries;";
+		
+		try(PreparedStatement stmt = this.conn.prepareStatement(sql)){
+			ResultSet result = stmt.executeQuery(sql);
+			while (result.next()) {
+				Country country = CountryFactory.createCountry(result.getLong("Code"), result.getString("Name"), 
+						CountryE.valueOf(result.getString("Continent")), result.getFloat("SurfaceAarea"),
+						result.getLong("HeadOfState"));
+				allCountries.add(country);
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.getCause();
+			e.printStackTrace();
+		}
+		return allCountries;
+		
 	}
 
 }

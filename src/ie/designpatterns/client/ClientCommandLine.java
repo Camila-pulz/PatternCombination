@@ -27,9 +27,13 @@ public class ClientCommandLine {
 
 			input = reader.nextLine();
 			if (input.equals("1")) {
+				System.out.println("The information will be loaded.");
 
 			}
 			if (input.equals("2")) {
+				System.out.println("Please, insert the name of the country:");
+				
+				
 
 			}
 			if (input.equals("3")) {
