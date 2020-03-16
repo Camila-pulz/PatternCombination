@@ -1,5 +1,7 @@
 package ie.designpatterns.test;
 
+import java.util.List;
+
 import ie.designpatterns.client.ClientCommandLine;
 import ie.designpatterns.connection.ConnectionDatabase;
 import ie.designpatterns.connection.DaoCountry;
@@ -14,11 +16,18 @@ public class Test {
 		// TODO Auto-generated method stub
 		ClientCommandLine ccl = new ClientCommandLine();
 		ccl.showOptions();
-		Country brazil = CountryFactory.createCountry(ccl.getCode(), ccl.getCountryN(), CountryE.getCountryE(ccl.getContinent()), ccl.getSurface(), ccl.getHead());
-		System.out.println(brazil);
+		// Country brazil = CountryFactory.createCountry(ccl.getCode(),
+		// ccl.getCountryN(), CountryE.getCountryE(ccl.getContinent()),
+		// ccl.getSurface(), ccl.getHead());
+		// System.out.println(brazil);
 		DaoCountry dao = new DaoCountry(ConnectionDatabase.getConnection());
-		dao.addCountry(brazil);
+		// dao.addCountry(brazil);
+		List<Country> countries = dao.listAllCountries();
+		for (Country c : countries) {
+			System.out.println(c);
+		}
 
+		List<Country> countries2 = dao.findCountryByCode(ccl.getCode2());
 	}
 
 }

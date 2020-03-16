@@ -7,7 +7,7 @@ public class ClientCommandLine {
 	private String input;
 	private String countryN, continent;
 	private float surface;
-	private char head, code;
+	private char[] head, code,code2;
 	private Scanner reader = new Scanner(System.in);
 
 	public void showOptions() {
@@ -32,6 +32,7 @@ public class ClientCommandLine {
 			}
 			if (input.equals("2")) {
 				System.out.println("Please, insert the name of the country:");
+				//code2 = reader.
 				
 				
 
@@ -56,7 +57,7 @@ public class ClientCommandLine {
 
 		
 		System.out.println("Please, type the code of the Country:");
-		code = reader.next().charAt(0);
+		code = reader.next();
 		System.out.println(code);
 		
 		System.out.println("Please, insert the area of the surface of the country:");
@@ -85,11 +86,11 @@ public class ClientCommandLine {
 		return countryN;
 	}
 
-	public char getCode() {
+	public char[] getCode() {
 		return code;
 	}
 	
-	public void setCode(char code) {
+	public void setCode(char[] code) {
 		this.code = code;
 		
 	}
@@ -114,12 +115,17 @@ public class ClientCommandLine {
 		this.surface = surface;
 	}
 
-	public char getHead() {
+	public char[] getHead() {
 		return head;
 	}
 
-	public void setHead(char head) {
+	public void setHead(char[] head) {
 		this.head = head;
+	}
+
+	public char[] getCode2() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 //	public static void main(String[] args) {
