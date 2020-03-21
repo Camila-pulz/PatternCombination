@@ -2,7 +2,7 @@ package ie.designpatterns.country;
 
 public class CountryFactory {
 
-	public static Country createCountry(char[] code, String name, CountryE continent, float area, char[] head) {
+	public static Country createCountry(String code, String name, CountryE continent, float area, String head) {
 
 		Country country = null;
 

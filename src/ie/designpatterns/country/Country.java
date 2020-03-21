@@ -5,18 +5,18 @@ import java.util.Arrays;
 public abstract class Country {
 	
 	
-	private char[] code;
+	private String code;
 	private String name;
 	private CountryE continent;
 	private float surfaceAarea;
-	private char[] headOfState;
+	private String headOfState;
 	
 
 	public CountryE getContinent() {
 		return continent;
 	}
 
-	public Country(char[] code, String name, CountryE continent, float area, char[] head) {
+	public Country(String code, String name, CountryE continent, float area, String head) {
 		this.code = code;
 		this.name = name;
 		this.continent = continent;
@@ -34,15 +34,15 @@ public abstract class Country {
 		this.surfaceAarea = surfaceAarea;
 	}
 
-	public void setHeadOfState(char[] headOfState) {
+	public void setHeadOfState(String headOfState) {
 		this.headOfState = headOfState;
 	}
 
-	public char[] getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(char[] code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 
@@ -54,14 +54,16 @@ public abstract class Country {
 		return surfaceAarea;
 	}
 
-	public char[] getHeadOfState() {
+	public String getHeadOfState() {
 		return headOfState;
 	}
 
 	@Override
 	public String toString() {
-		return "Country [code=" + Arrays.toString(code) + ", name=" + name + ", continent=" + continent
-				+ ", surfaceAarea=" + surfaceAarea + ", headOfState=" + Arrays.toString(headOfState) + "]";
+		return "Country [code=" + code + ", name=" + name + ", continent=" + continent + ", surfaceAarea="
+				+ surfaceAarea + ", headOfState=" + headOfState + "]";
+	
+	
 	}
 
 	

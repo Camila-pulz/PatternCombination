@@ -16,18 +16,30 @@ public class Test {
 		// TODO Auto-generated method stub
 		ClientCommandLine ccl = new ClientCommandLine();
 		ccl.showOptions();
-		// Country brazil = CountryFactory.createCountry(ccl.getCode(),
-		// ccl.getCountryN(), CountryE.getCountryE(ccl.getContinent()),
-		// ccl.getSurface(), ccl.getHead());
-		// System.out.println(brazil);
+		
+		/*************************TestADD_NEW_COUNTRIES*********************************/
+		//Country brazil = CountryFactory.createCountry(ccl.getCode(),
+		//ccl.getCountryN(), CountryE.getCountryE(ccl.getContinent()),
+		//ccl.getSurface(), ccl.getHead());
+		//System.out.println(brazil);
 		DaoCountry dao = new DaoCountry(ConnectionDatabase.getConnection());
-		// dao.addCountry(brazil);
+		//dao.addCountry(brazil);
+		//System.out.println("Done");
+		
+		/*************************TestSELECT_ALL_CONTRIES******************************/
+		
 		List<Country> countries = dao.listAllCountries();
-		for (Country c : countries) {
-			System.out.println(c);
-		}
+			for (Country c : countries) {
+		System.out.println(countries);
+			//}
+		
+		/*************************TestSELECT_COUNTRIES_BY_CODE*************************/
 
-		List<Country> countries2 = dao.findCountryByCode(ccl.getCode2());
+		//List<Country> countries2 = dao.findCountryByCode(ccl.getCode2());
+		//for(Country c: countries2) {
+			//System.out.println(c);
+
+		}
 	}
 
 }
