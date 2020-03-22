@@ -1,18 +1,29 @@
 package ie.designpatterns.client;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
+
+import ie.designpatterns.test.Test;
 
 public class ClientCommandLine {
 
 	private String input;
 	private String countryN, continent;
 	private float surface;
-	private String code, head, code2;
+	private String code, head, code2, name;
 	private Scanner reader = new Scanner(System.in);
-
+	private BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+	private Test test;
+	
+	public ClientCommandLine(Test test) {
+		this.test = test;
+	}
+	
 	public void showOptions() {
+		
 
-		System.out.println("Welcome to the system!");
 		System.out.println("Please, select one of the options:");
 		System.out.println("1. List all the countries in the database");
 		System.out.println("2. Find a country by country code");
@@ -26,21 +37,32 @@ public class ClientCommandLine {
 		try {
 
 			input = reader.nextLine();
-			if (input.equals("1")) {
-				System.out.println("The information will be loaded.");
 
-			}
-			if (input.equals("2")) {
-				System.out.println("Please, insert the code of the country:");
-				code2 = reader.next();
-				System.out.println(code2);
-				
-			}
-			if (input.equals("3")) {
+			if (input.matches("[1-9]+")) {
+				if (input.equals("1")) {
+					System.out.println("The information will be loaded.");
+					
+				}
+				if (input.equals("2")) {
+					System.out.println("Please, insert the code of the country:");
+					code2 = reader.nextLine();
+					System.out.println(code2);
 
-			}
-			if (input.equals("4")) {
-				dataToSave();
+				}
+				if (input.equals("3")) {
+					System.out.println("Please, insert the name of the country:");
+					name = reader.nextLine();
+					System.out.println(name);
+
+				}
+				if (input.equals("4")) {
+					dataToSave();
+					//test.addCountries();
+				}
+
+			} else {
+				System.out.println("You have to insert a number between 1 to 4:");
+				showOptions();
 			}
 
 		} catch (Exception e) {
@@ -48,17 +70,16 @@ public class ClientCommandLine {
 		}
 	}
 
-	public void dataToSave() {
-		
+	public void dataToSave() throws IOException {
+
 		System.out.println("Please, type the name of the Country:");
 		countryN = reader.nextLine();
 		System.out.println(countryN);
 
-		
 		System.out.println("Please, type the code of the Country:");
 		code = reader.next();
 		System.out.println(code);
-		
+
 		System.out.println("Please, insert the area of the surface of the country:");
 		surface = reader.nextFloat();
 		System.out.println(surface);
@@ -76,8 +97,36 @@ public class ClientCommandLine {
 		System.out.println("6. Oceania");
 		System.out.println("7. Antarctica");
 
-		continent = reader.next();
+		continent = in.readLine();
 		System.out.println(continent);
+		test.addCountries();
+		goBackOptions();
+
+	}
+
+	public void goBackOptions() throws IOException {
+
+		System.out.println("Do you want to return to the main menu (Y/N)?");
+
+		String answer = in.readLine();
+		boolean validAnswer = false;
+		do {
+
+			if ((answer.equals("Y")) || (answer.equals("y"))) {
+				showOptions();
+				validAnswer = true;
+
+			} else if ((answer.equals("N")) || (answer.equals("n"))) {
+				System.out.println("GoodBye!");
+				validAnswer = true;
+
+			} else {
+				System.out.println("Please, select one option:");
+				goBackOptions();
+				validAnswer = false;
+			}
+
+		} while (validAnswer == false);
 
 	}
 
@@ -88,10 +137,10 @@ public class ClientCommandLine {
 	public String getCode() {
 		return code;
 	}
-	
+
 	public void setCode(String code) {
 		this.code = code;
-		
+
 	}
 
 	public void setCountryN(String countryN) {
@@ -124,16 +173,20 @@ public class ClientCommandLine {
 
 	public String getCode2() {
 		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public void setCode2(String code2) {
-		this.code2 = code2;
-		
+		return code2;
 	}
 
-//	public static void main(String[] args) {
-	// TODO Auto-generated method stub
-	// new ClientCommandLine();
+	public void setCode2(String code2) {
+		this.code2 = code2;
+
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 }

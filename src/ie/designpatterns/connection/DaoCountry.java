@@ -13,7 +13,7 @@ import ie.designpatterns.country.CountryFactory;
 
 public class DaoCountry {
 
-	Connection conn;
+	Connection conn = ConnectionDatabase.getConnectionDatabase();
 
 	public DaoCountry(Connection conn) {
 		this.conn = conn;
@@ -22,7 +22,6 @@ public class DaoCountry {
 	public Country addCountry(Country country) {
 
 		String sql = "INSERT INTO country(Code, Name, Continent, SurfaceArea, HeadOfState) VALUES (?,?,?,?,?)";
-		Connection conn = ConnectionDatabase.getConnection();
 
 		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.setString(1, country.getCode());
@@ -55,8 +54,10 @@ public class DaoCountry {
 						CountryE.getCountryE(result.getString("Continent")), result.getFloat("SurfaceArea"),
 						result.getString("HeadOfState"));
 				allCountries.add(country);
-				System.out.println(country);
+			
 			}
+			
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.getCause();
@@ -68,6 +69,7 @@ public class DaoCountry {
 	public List<Country> findCountryByCode(String code) {
 		List<Country> cn = new ArrayList<>();
 		String sql = "SELECT * FROM country WHERE Code='" + code + "';";
+		
 
 		try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
 			ResultSet result = stmt.executeQuery(sql);
@@ -76,7 +78,7 @@ public class DaoCountry {
 						CountryE.getCountryE(result.getString("Continent")), result.getFloat("SurfaceArea"),
 						result.getString("HeadOfState"));
 				cn.add(country);
-				System.out.println(country);
+				
 			}
 
 		} catch (SQLException e) {
