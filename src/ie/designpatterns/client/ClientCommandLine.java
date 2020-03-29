@@ -41,23 +41,26 @@ public class ClientCommandLine {
 			if (input.matches("[1-9]+")) {
 				if (input.equals("1")) {
 					System.out.println("The information will be loaded.");
+					test.listAll();
 					
 				}
 				if (input.equals("2")) {
 					System.out.println("Please, insert the code of the country:");
 					code2 = reader.nextLine();
 					System.out.println(code2);
+					test.findByCode();
 
 				}
 				if (input.equals("3")) {
 					System.out.println("Please, insert the name of the country:");
 					name = reader.nextLine();
 					System.out.println(name);
+					test.findByName();
 
 				}
 				if (input.equals("4")) {
 					dataToSave();
-					//test.addCountries();
+					test.addCountries();
 				}
 
 			} else {
@@ -116,9 +119,10 @@ public class ClientCommandLine {
 				showOptions();
 				validAnswer = true;
 
-			} else if ((answer.equals("N")) || (answer.equals("n"))) {
-				System.out.println("GoodBye!");
+			} if ((answer.equals("N")) || (answer.equals("n"))) {
 				validAnswer = true;
+				System.out.println("GoodBye!");
+				
 
 			} else {
 				System.out.println("Please, select one option:");

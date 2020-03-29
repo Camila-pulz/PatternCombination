@@ -13,7 +13,7 @@ import ie.designpatterns.country.CountryFactory;
 public class Test {
 
 	ClientCommandLine ccl = new ClientCommandLine(this);
-	//DaoCountry dao = new DaoCountry(ConnectionDatabase.getConnectionDatabase());
+	DaoCountry dao = new DaoCountry(ConnectionDatabase.getConnectionDatabase());
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -31,32 +31,47 @@ public class Test {
 		Country brazil = CountryFactory.createCountry(ccl.getCode(), ccl.getCountryN(),
 				CountryE.getCountryE(ccl.getContinent()), ccl.getSurface(), ccl.getHead());
 		System.out.println(brazil);
-		DaoCountry dao = new DaoCountry(ConnectionDatabase.getConnectionDatabase());
+		//DaoCountry dao = new DaoCountry(ConnectionDatabase.getConnectionDatabase());
 		dao.addCountry(brazil);
 		System.out.println("Done");
-	
+
 	}
 
-	/*
-	 * System.out.println("**************Method to find a country by name:******");
-	 * List<Country> countries = dao.listAllCountries(); for (Country c : countries)
-	 * { System.out.println(countries); } ccl.goBackOptions();
-	 * 
-	 * System.out.println("********Method find a country by name:**************");
-	 * List<Country> countries2 = dao.findCountryByCode(ccl.getCode2());
-	 * System.out.println(ccl.getCode2()); for (Country ct : countries2) {
-	 * System.out.println(ct); } if (countries2.isEmpty()) {
-	 * System.out.println("There is no such record on the list."); }
-	 * ccl.goBackOptions();
-	 * 
-	 * 
-	 * System.out.
-	 * println("***************Method find a country by name:***************");
-	 * List<Country> countryFound = dao.findByName(ccl.getName()); for (Country cF :
-	 * countryFound) { System.out.println(cF); } if (countryFound.isEmpty()) {
-	 * System.out.println("There is no such record on the list."); }
-	 * ccl.goBackOptions();
-	 * 
-	 * }
-	 */
+	public void findByName() throws IOException {
+
+		//DaoCountry dao = new DaoCountry(ConnectionDatabase.getConnectionDatabase());
+		List<Country> countryFound = dao.findByName(ccl.getName());
+		for (Country cF : countryFound) {
+			System.out.println(cF);
+		}
+		if (countryFound.isEmpty()) {
+			System.out.println("There is no such record on the list.");
+		}
+		ccl.goBackOptions();
+
+	}
+
+	public void findByCode() throws IOException {
+
+	//	DaoCountry dao = new DaoCountry(ConnectionDatabase.getConnectionDatabase());
+		List<Country> countries2 = dao.findCountryByCode(ccl.getCode2());
+		System.out.println(ccl.getCode2());
+		for (Country ct : countries2) {
+			System.out.println(ct);
+		}
+		if (countries2.isEmpty()) {
+			System.out.println("There is no such record on the list.");
+		}
+		ccl.goBackOptions();
+
+	}
+
+	public void listAll() throws IOException {
+
+		//DaoCountry dao = new DaoCountry(ConnectionDatabase.getConnectionDatabase());
+		List<Country> countries = dao.listAllCountries();
+		System.out.println(countries);
+		ccl.goBackOptions();
+
+	}
 }
