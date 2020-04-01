@@ -1,29 +1,22 @@
 package ie.designpatterns.country;
 
-import java.util.Arrays;
 
-public abstract class Country {
+public abstract class Country {//abstract class that contains the attributes of the objects country
 	
-	
-	private String code;
-	private String name;
-	private CountryE continent;
-	private float surfaceAarea;
-	private String headOfState;
+	private String code;//code of the country
+	private String name;//name of the country
+	private CountryE continent;//continent
+	private float surfaceAarea;//surface 
+	private String headOfState;//head of state
 	
 
-	public CountryE getContinent() {
-		return continent;
-	}
-
+	//constructor
 	public Country(String code, String name, CountryE continent, float area, String head) {
 		this.code = code;
 		this.name = name;
 		this.continent = continent;
 		this.surfaceAarea = area;
 		this.headOfState = head;
-		
-
 	}
 
 	public void setName(String name) {
@@ -56,6 +49,10 @@ public abstract class Country {
 
 	public String getHeadOfState() {
 		return headOfState;
+	}
+	
+	public CountryE getContinent() {
+		return continent;
 	}
 
 	@Override

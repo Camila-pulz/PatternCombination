@@ -88,7 +88,8 @@ public class ClientCommandLine {
 
 		boolean valid = false;
 		boolean valid1 = false;
-		boolean valid3 = false;
+		boolean valid2 = false;
+		boolean valid4 = false;
 		
 		do {
 			System.out.println("Name of the Country (AT LEAST 1 CHARACTER):");
@@ -103,7 +104,7 @@ public class ClientCommandLine {
 	
 		
 		do {
-			System.out.println("Code of the Country:");
+			System.out.println("Code of the Country (AT LEAST 1 CHARACTER AND NOT MORE THAN 3)");
 			code = reader.nextLine();// read the inpuT
 			if((code.trim().length() > 0) && (code.trim().length() < 4)){
 				valid1 = true;
@@ -115,36 +116,42 @@ public class ClientCommandLine {
 	
 
 		do {
-			System.out.println("Please, insert the area of the surface of the country:");
+			System.out.println("Area of the surface of the country:");
 			surface = reader.nextFloat();// read the input
-			if (surface != 0.0f) {
-				valid3 = true;
-				System.out.println(surface);
-			} else {
+			if (surface == 0.0f) {
 				System.out.println("OPS!Insert the value again:");
+			} else {
+				valid2 = true;
+				System.out.println(surface);
 			}
-		} while (valid3 == false);
-
-		System.out.println("Please, insert the Head of state:");
-		head = reader.next();// read the input
-		System.out.println(head);
-
-		System.out.println("Select the number which corresponds to the name of the continent:");
-		System.out.println("1. North America");
-		System.out.println("2. South America");
-		System.out.println("3. Europe");
-		System.out.println("4. Asia");
-		System.out.println("5. Africa");
-		System.out.println("6. Oceania");
-		System.out.println("7. Antarctica");
-
+		} while (valid2 == false);
+		
+		System.out.println("Insert the Head of state:");
+		head = in.readLine();// read the input
+			System.out.println(head);
+		
+		do {
+		System.out.println("Indicate the continent (PLEASE, TYPE EXACTLY HOW IT IS SHOWN):");
+		System.out.println("North America");
+		System.out.println("South America");
+		System.out.println("Europe");
+		System.out.println("Asia");
+		System.out.println("Africa");
+		System.out.println("Oceania");
+		System.out.println("Antarctica");
 		continent = in.readLine();
-		System.out.println(continent);
-		test.addCountries();
-		goBackOptions();
-
+		if(continent.trim().length() > 0) {
+			valid4 = true;
+			System.out.println(continent);
+			test.addCountries();
+			goBackOptions();
+		}else {
+			System.out.println("OPS!Try again:");
+		}
+		
+		}while(valid4 ==false);
 	}
-
+	
 	public void goBackOptions() throws IOException {
 		// method that allows the user to go back to the main menu to choose more
 		// options or exit the program.

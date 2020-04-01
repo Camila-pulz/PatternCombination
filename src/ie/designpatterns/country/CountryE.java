@@ -1,32 +1,26 @@
 package ie.designpatterns.country;
 
-public enum CountryE {
+public enum CountryE {// ENUM WHICH IS ASSIGNS THE VALUES OF THE CONTINENTS TO EACH OBJECT
 
-	NORTH_AMERICA(1, "North America"), SOUTH_AMERICA(2, "South America"), EUROPE(3, "Europe"), ASIA(4, "Asia"),
-	AFRICA(5, "Africa"), OCEANIA(6, "Oceania"), ANTARCTICA(7, "Antarctica");
+	NORTH_AMERICA("North America"), SOUTH_AMERICA("South America"), EUROPE("Europe"), ASIA("Asia"), AFRICA("Africa"),
+	OCEANIA("Oceania"), ANTARCTICA("Antarctica");
 
 	private final String continent;
-	private final int code;
 
-	private CountryE(int cod, String continent) {
-		this.code = cod;
+	// CONSTRUCTOR OF THE ENUM
+	private CountryE(String continent) {
 		this.continent = continent;
-
 	}
 
 	public String getContinent() {
 		return continent;
 	}
-
-	public int getCode() {
-		return code;
-	}
-
+	// FOR EACH VALUE OF THE CONTINENT THERE IS A STRING VALUE ASSIGNED
 	public static CountryE getCountryE(String continent) {
 
 		for (CountryE countries : values()) {
 			if (countries.getContinent().equals(continent)) {
-				return countries;
+				return countries;// RETURN THE CONTINENT
 			}
 		}
 		return null;

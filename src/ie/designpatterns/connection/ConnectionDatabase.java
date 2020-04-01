@@ -10,7 +10,7 @@ public class ConnectionDatabase {
 	
 	static Connection conn = null;
 	
-	//Constructor
+	//Private Constructor
 	private ConnectionDatabase() {
 		
 	}
