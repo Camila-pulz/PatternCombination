@@ -24,6 +24,7 @@ public class ConnectionDatabase {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("The connection failed");
 
 		}
 		return conn;
