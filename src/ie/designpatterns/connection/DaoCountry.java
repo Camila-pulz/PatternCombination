@@ -17,8 +17,8 @@ public class DaoCountry {
 
 	Connection conn = ConnectionDatabase.getConnectionDatabase();
 
-	public DaoCountry(Connection conn) {//initializes the connection to the database
-		this.conn = conn;
+	public DaoCountry(Connection connectionDatabase) {//initializes the connection to the database
+		this.conn = connectionDatabase;
 	}
 
 	public Country addCountry(Country country) {//method to add new records to the database
@@ -26,7 +26,7 @@ public class DaoCountry {
 		//query statement to insert data into the database 
 		String sql = "INSERT INTO country(Code, Name, Continent, SurfaceArea, HeadOfState) VALUES (?,?,?,?,?)";
 
-		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+		try (PreparedStatement stmt = ((Connection) conn).prepareStatement(sql)) {
 			stmt.setString(1, country.getCode());//set the values of the fist parameter
 			stmt.setString(2, country.getName());//set the values of the second parameter
 			stmt.setString(3, country.getContinent().toString());//set the values of the third parameter
@@ -56,7 +56,7 @@ public class DaoCountry {
 		List<Country> allCountries = new ArrayList<>();//creation of list to hold the objects country
 		String sql = "SELECT * FROM country;";//query 
 
-		try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			ResultSet result = stmt.executeQuery(sql);
 			while (result.next()) {//go through each row of the database getting the values for each column
 				Country country = CountryFactory.createCountry(result.getString("Code"), result.getString("Name"),
@@ -80,7 +80,7 @@ public class DaoCountry {
 		String sql = "SELECT * FROM country WHERE Code='" + code + "';";//query statement to retrieve data
 		
 
-		try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			ResultSet result = stmt.executeQuery(sql);//generate the table of data to represent the database set
 			while (result.next()) {//go though all the records in the databse
 				Country country = CountryFactory.createCountry(result.getString("Code"), result.getString("Name"),
@@ -101,7 +101,7 @@ public class DaoCountry {
 		List<Country> countryL = new ArrayList<>();//creation of the list to hold the objects
 		String sql = "SELECT * FROM country WHERE Name='" + name + "';";//query statement
 
-		try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			ResultSet result = stmt.executeQuery(sql);//table of data to represent the database
 			while (result.next()) {//go through the data of the database
 				Country country = CountryFactory.createCountry(result.getString("Code"), result.getString("Name"),

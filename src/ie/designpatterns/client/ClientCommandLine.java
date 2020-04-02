@@ -11,7 +11,7 @@ public class ClientCommandLine {
 	//This class is responsible to provide the interaction with the user and validate its answers accordingly.
 
 	private String input;// variable that holds the value of the input for menu selection
-	private String countryN, continent;// it holds the country name and the continent
+	private String countryN, continent, surfaceS;// it holds the country name and the continent
 	private float surface;// value of the surface of the country
 	private String code, head, code2, name; // values of the the input related to the code of the country, head of state
 	private Scanner reader = new Scanner(System.in);// scanner to read the user input
@@ -117,14 +117,15 @@ public class ClientCommandLine {
 
 		do {
 			System.out.println("Area of the surface of the country:");
-			surface = reader.nextFloat();// read the input
-			if (surface == 0.0f) {
-				System.out.println("OPS!Insert the value again:");
-			} else {
+			surfaceS = reader.nextLine();// read the input
+			if (surfaceS.trim().length() > 0) {//validation to make sure the user will insert a value
 				valid2 = true;
+				surface = Float.valueOf(surfaceS);//conversion from string to float
 				System.out.println(surface);
+			} else {
+				System.out.println("OPS!Insert the value again:");
 			}
-		} while (valid2 == false);
+		} while (valid2 != true);
 		
 		System.out.println("Insert the Head of state:");
 		head = in.readLine();// read the input
@@ -132,15 +133,15 @@ public class ClientCommandLine {
 		
 		do {
 		System.out.println("Indicate the continent (PLEASE, TYPE EXACTLY HOW IT IS SHOWN):");
-		System.out.println("North America");
-		System.out.println("South America");
-		System.out.println("Europe");
-		System.out.println("Asia");
-		System.out.println("Africa");
-		System.out.println("Oceania");
-		System.out.println("Antarctica");
+		System.out.println("North America");//enum
+		System.out.println("South America");//enum
+		System.out.println("Europe");//enum
+		System.out.println("Asia");//enum
+		System.out.println("Africa");//enum
+		System.out.println("Oceania");//enum
+		System.out.println("Antarctica");//enum
 		continent = in.readLine();
-		if(continent.trim().length() > 0) {
+		if(continent.trim().length() > 0) {//validation to guarantee not null values
 			valid4 = true;
 			System.out.println(continent);
 			test.addCountries();
@@ -238,6 +239,14 @@ public class ClientCommandLine {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getSurfaceS() {
+		return surfaceS;
+	}
+
+	public void setSurfaceS(String surfaceS) {
+		this.surfaceS = surfaceS;
 	}
 
 }

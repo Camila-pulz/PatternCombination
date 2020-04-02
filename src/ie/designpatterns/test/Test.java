@@ -1,6 +1,7 @@
 package ie.designpatterns.test;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.List;
 import ie.designpatterns.client.ClientCommandLine;
 import ie.designpatterns.connection.ConnectionDatabase;

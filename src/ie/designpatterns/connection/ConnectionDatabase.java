@@ -5,10 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionDatabase {
-
+	
 	//public static Connection conn = null;
 	
-	static Connection conn = null;
+	private static Connection conn = null;
 	
 	//Private Constructor
 	private ConnectionDatabase() {
