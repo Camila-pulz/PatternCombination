@@ -6,6 +6,8 @@ import java.util.List;
 import ie.designpatterns.client.ClientCommandLine;
 import ie.designpatterns.connection.ConnectionDatabase;
 import ie.designpatterns.connection.DaoCountry;
+import ie.designpatterns.connection.Database;
+import ie.designpatterns.connection.ProxyConnection;
 import ie.designpatterns.country.Country;
 import ie.designpatterns.country.CountryE;
 import ie.designpatterns.country.CountryFactory;
@@ -13,7 +15,9 @@ import ie.designpatterns.country.CountryFactory;
 public class Test {//This class will be responsible to be the interaction between the DAO class and the command line class
 //It connects to the database and call the DAO to perform the operations 
 	ClientCommandLine ccl = new ClientCommandLine(this);
-	DaoCountry dao = new DaoCountry(ConnectionDatabase.getConnectionDatabase());
+	Database db = new ProxyConnection();
+	Connection conn = db.getConnection();
+	DaoCountry dao = new DaoCountry(db.getConnection());
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub

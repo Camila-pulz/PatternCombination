@@ -14,19 +14,21 @@ import ie.designpatterns.country.CountryE;
 import ie.designpatterns.country.CountryFactory;
 
 public class DaoCountry {
+	
+	Database db = new ProxyConnection();
+	Connection conn = db.getConnection();
 
-	Connection conn = ConnectionDatabase.getConnectionDatabase();
-
-	public DaoCountry(Connection connectionDatabase) {//initializes the connection to the database
-		this.conn = connectionDatabase;
-	}
+	public DaoCountry(Connection conn) {//initializes the connection to the database
+		this.conn = conn;
+}
+	
 
 	public Country addCountry(Country country) {//method to add new records to the database
 		
 		//query statement to insert data into the database 
 		String sql = "INSERT INTO country(Code, Name, Continent, SurfaceArea, HeadOfState) VALUES (?,?,?,?,?)";
 
-		try (PreparedStatement stmt = ((Connection) conn).prepareStatement(sql)) {
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.setString(1, country.getCode());//set the values of the fist parameter
 			stmt.setString(2, country.getName());//set the values of the second parameter
 			stmt.setString(3, country.getContinent().toString());//set the values of the third parameter
@@ -82,7 +84,7 @@ public class DaoCountry {
 
 		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			ResultSet result = stmt.executeQuery(sql);//generate the table of data to represent the database set
-			while (result.next()) {//go though all the records in the databse
+			while (result.next()) {//go though all the records in the database
 				Country country = CountryFactory.createCountry(result.getString("Code"), result.getString("Name"),
 						CountryE.getCountryE(result.getString("Continent")), result.getFloat("SurfaceArea"),
 						result.getString("HeadOfState"));

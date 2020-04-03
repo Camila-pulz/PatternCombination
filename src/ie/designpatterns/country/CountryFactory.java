@@ -9,31 +9,32 @@ public class CountryFactory {
 
 		switch (continent) {//it creates the objects according to their continent 
 
-		case NORTH_AMERICA://ENUM class Country
-			country = new CountryObjects(code, name, continent, area, head);
-			break;
-
-		case SOUTH_AMERICA://ENUM class Country
-			country = new CountryObjects(code, name, continent, area, head);
-			break;
-
-		case AFRICA://ENUM class Country
-			country = new CountryObjects(code, name, continent, area, head);
-			break;
-
+		
 		case ASIA://ENUM class Country
-			country = new CountryObjects(code, name, continent, area, head);
-			break;
-
-		case OCEANIA://ENUM class Country
 			country = new CountryObjects(code, name, continent, area, head);
 			break;
 
 		case EUROPE://ENUM class Country
 			country = new CountryObjects(code, name, continent, area, head);
 			break;
+			
+		case NORTHAMERICA://ENUM class Country
+			country = new CountryObjects(code, name, continent, area, head);
+			break;
+			
+		case AFRICA://ENUM class Country
+			country = new CountryObjects(code, name, continent, area, head);
+			break;
+			
+		case OCEANIA://ENUM class Country
+			country = new CountryObjects(code, name, continent, area, head);
+			break;
 
 		case ANTARCTICA://ENUM class Country
+			country = new CountryObjects(code, name, continent, area, head);
+			break;
+			
+		case SOUTHAMERICA://ENUM class Country
 			country = new CountryObjects(code, name, continent, area, head);
 			break;
 		}
