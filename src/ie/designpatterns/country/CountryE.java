@@ -21,9 +21,14 @@ public enum CountryE {// ENUM WHICH IS ASSIGNS THE VALUES OF THE CONTINENTS TO E
 		for (CountryE countries : values()) {
 			if (countries.getContinent().equals(continent)) {
 				return countries;// RETURN THE CONTINENT
-			}
+			
+		}
 		}
 		return null;
 
 	}
 }
+	
+
+	
+
