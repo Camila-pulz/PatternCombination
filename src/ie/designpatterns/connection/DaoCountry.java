@@ -15,9 +15,10 @@ import ie.designpatterns.country.CountryFactory;
 
 public class DaoCountry {
 	
-	Database db = new ProxyConnection();
-	Connection conn = db.getConnection();
-
+	Database db = new ProxyConnection();//creation of the object of the class ProxyConnection
+	Connection conn = db.getConnection();//calling the method implemented in the class ProxyConnection
+	
+	//Constructor
 	public DaoCountry(Connection conn) {//initializes the connection to the database
 		this.conn = conn;
 }
@@ -38,8 +39,9 @@ public class DaoCountry {
 			stmt.execute();
 			stmt.close();
 			//conn.close();
-			
+		
 			System.out.println("The record was saved successfully");
+			
 			
 		} catch (SQLException e) {//catch the errors. For example, duplicated primary key.
 			    if (e instanceof MySQLIntegrityConstraintViolationException) {
@@ -47,6 +49,7 @@ public class DaoCountry {
 			    } else {
 					e.getCause();
 					e.printStackTrace();
+					
 			    }
 			    
 		}
@@ -65,12 +68,11 @@ public class DaoCountry {
 						CountryE.getCountryE(result.getString("Continent")), result.getFloat("SurfaceArea"),
 						result.getString("HeadOfState"));
 				allCountries.add(country);//add all the objects to the list
-			
 			}
 			
 		
 		} catch (SQLException e) {//handle errors
-			e.printStackTrace();
+			//e.printStackTrace();
 			System.out.println("Error");//print the message to the user
 
 		}

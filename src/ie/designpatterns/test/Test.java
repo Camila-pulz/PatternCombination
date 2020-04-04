@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 import ie.designpatterns.client.ClientCommandLine;
-import ie.designpatterns.connection.ConnectionDatabase;
 import ie.designpatterns.connection.DaoCountry;
 import ie.designpatterns.connection.Database;
 import ie.designpatterns.connection.ProxyConnection;
@@ -15,9 +14,9 @@ import ie.designpatterns.country.CountryFactory;
 public class Test {//This class will be responsible to be the interaction between the DAO class and the command line class
 //It connects to the database and call the DAO to perform the operations 
 	ClientCommandLine ccl = new ClientCommandLine(this);
-	Database db = new ProxyConnection();
-	Connection conn = db.getConnection();
-	DaoCountry dao = new DaoCountry(db.getConnection());
+	Database db = new ProxyConnection();//creation of the object of the class ProxyConnection
+	Connection conn = db.getConnection();//calling the method implemented in the class ProxyConnection
+	DaoCountry dao = new DaoCountry(db.getConnection());//the connection as the parameter in the constructor of DAO class
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -31,7 +30,7 @@ public class Test {//This class will be responsible to be the interaction betwee
 	}
 
 	public void addCountries() {//method to add new records to the database
-
+		//create new object of type country by calling the factory class
 		Country brazil = CountryFactory.createCountry(ccl.getCode(), ccl.getCountryN(),
 				CountryE.getCountryE(ccl.getContinent()), ccl.getSurface(), ccl.getHead());//call the method in the factory class 
 		System.out.println(brazil);
@@ -39,16 +38,16 @@ public class Test {//This class will be responsible to be the interaction betwee
 	}
 		
 
-	public void findByName() throws IOException {
-
-		List<Country> countryFound = dao.findByName(ccl.getName());
-		for (Country cF : countryFound) {
-			System.out.println(cF);
+	public void findByName() throws IOException {//METHOD TO FIND COUNTRY BY ITS NAME
+		////CREATION OF LIST OF COUNTRIES
+		List<Country> countryFound = dao.findByName(ccl.getName()); //CALLING THE METHOD IMPLEMENTED IN DAO CLASS
+		for (Country cF : countryFound) {//GO THROUGH EACH OBJECT IN DATABASE WHICH HAS THE SAME NAME
+			System.out.println(cF);//PRINT THE LIST CREATED IN THE BEGINNING
 		}
-		if (countryFound.isEmpty()) {
+		if (countryFound.isEmpty()) {//VALIDATION IN CASE THERE IS NO OBJECTS WITH THE SEARCHED NAME
 			System.out.println("There is no such record on the list.");
 		}
-		ccl.goBackOptions();
+		ccl.goBackOptions();//RETURN TO THE MENU OPTIONS 
 
 	}
 

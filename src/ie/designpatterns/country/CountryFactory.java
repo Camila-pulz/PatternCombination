@@ -1,6 +1,6 @@
 
 package ie.designpatterns.country;
-//this class is the factory design pattern to create new country objects 
+//this class is the implementation of the factory design pattern to create new country objects 
 public class CountryFactory {
 
 	public static Country createCountry(String code, String name, CountryE continent, float area, String head) {
@@ -18,7 +18,7 @@ public class CountryFactory {
 			country = new CountryObjects(code, name, continent, area, head);
 			break;
 			
-		case NORTHAMERICA://ENUM class Country
+		case NORTH_AMERICA://ENUM class Country
 			country = new CountryObjects(code, name, continent, area, head);
 			break;
 			
@@ -34,7 +34,7 @@ public class CountryFactory {
 			country = new CountryObjects(code, name, continent, area, head);
 			break;
 			
-		case SOUTHAMERICA://ENUM class Country
+		case SOUTH_AMERICA://ENUM class Country
 			country = new CountryObjects(code, name, continent, area, head);
 			break;
 		}

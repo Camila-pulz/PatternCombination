@@ -2,8 +2,8 @@ package ie.designpatterns.country;
 
 public enum CountryE {// ENUM WHICH IS ASSIGNS THE VALUES OF THE CONTINENTS TO EACH OBJECT
 
-	ASIA("Asia"), EUROPE("Europe"), NORTHAMERICA("North America"), AFRICA("Africa"), 
-	OCEANIA("Oceania"), ANTARCTICA("Antarctica"), SOUTHAMERICA("South America");
+	ASIA("Asia"), EUROPE("Europe"), NORTH_AMERICA("North America"), AFRICA("Africa"), 
+	OCEANIA("Oceania"), ANTARCTICA("Antarctica"), SOUTH_AMERICA("South America");
 
 	private final String continent;
 
